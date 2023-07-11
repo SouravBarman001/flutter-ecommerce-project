@@ -54,7 +54,7 @@ class _SliderWidgetsState extends State<SliderWidgets> {
       ),
     ),
 
-        const SizedBox(height: 5,),
+        const SizedBox(height: 1,),
          Row(
            mainAxisAlignment: MainAxisAlignment.center,
           children: [
