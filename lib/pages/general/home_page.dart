@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/appbar_action_widgets.dart';
+import '../../widgets/slider_widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -35,16 +36,15 @@ class _HomePageState extends State<HomePage> {
             ],
 
           ),
-          body:  const Column(
-            children: [
-
-            ],
+          body:  const SafeArea(
+            child:Column(
+              children: [
+                SliderWidgets(),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-
-
