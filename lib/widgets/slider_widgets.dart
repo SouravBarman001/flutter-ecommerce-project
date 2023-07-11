@@ -47,7 +47,7 @@ class _SliderWidgetsState extends State<SliderWidgets> {
                   fit: BoxFit.cover,
                 ),
               ),
-            )
+            ),
 
           );
         },
@@ -62,7 +62,7 @@ class _SliderWidgetsState extends State<SliderWidgets> {
                 buildIndicator(currentIndex == i)
 
           ],
-        )
+        ),
     ],
     );
   }

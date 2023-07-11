@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'count_down_timer.dart';
+import 'content/count_down_timer.dart';
 
 class HappyHourTime extends StatefulWidget {
   const HappyHourTime({super.key});
@@ -13,8 +13,8 @@ class _HappyHourTimeState extends State<HappyHourTime> {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      padding: const EdgeInsets.only(left: 10,),
-       height: 40,
+      padding: const EdgeInsets.only(left: 14,),
+       height: 45,
        width: double.infinity,
       color: const Color(0xffebecf0),
       child:  const Row(
@@ -24,7 +24,7 @@ class _HappyHourTimeState extends State<HappyHourTime> {
         fontWeight: FontWeight.w600,
         ),),
           Padding(
-            padding: EdgeInsets.only(top: 8,left: 10),
+            padding: EdgeInsets.only(top: 10,left: 10),
             child: CountDownTimer(),
           ),
         ],

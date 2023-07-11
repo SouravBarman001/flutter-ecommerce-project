@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/appbar_action_widgets.dart';
+import '../../widgets/best_seller.dart';
 import '../../widgets/happy_hour.dart';
 import '../../widgets/slider_widgets.dart';
-import '../../widgets/count_down_timer.dart';
+import '../../widgets/content/count_down_timer.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -44,8 +45,9 @@ class _HomePageState extends State<HomePage> {
                 SliderWidgets(),
                 SizedBox(height: 10,),
                 HappyHourTime(),
-                SizedBox(height: 20,),
-
+                SizedBox(height: 5,),
+                // Bestsellers
+                BestSeller(),
               ],
             ),
           ),

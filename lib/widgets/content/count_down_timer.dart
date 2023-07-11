@@ -95,7 +95,7 @@ class _CountDownTimerState extends State<CountDownTimer> {
                  ),
                ),
                Text(header,style: const TextStyle(
-                 fontSize: 5,color: Colors.white,
+                 fontSize: 5,color: Colors.white,fontWeight: FontWeight.w500,
                ),),
              ],
            ),
