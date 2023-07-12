@@ -47,9 +47,10 @@ class _AppBarActionWidgetsState extends State<AppBarActionWidgets> {
             ),
           ),
           DropdownButton<String>(
-            focusColor: Colors.black,
+            borderRadius: BorderRadius.circular(10),
+            focusColor: const Color(0xffdf0100),
             dropdownColor: Colors.red,
-            menuMaxHeight:90.0,
+            //menuMaxHeight:90.0,
             value: selectedOption,
             onChanged: (String? newValue) {
               setState(() {

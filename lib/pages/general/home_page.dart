@@ -16,23 +16,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final FocusNode _focusNode = FocusNode();
-
-  @override
-  void dispose() {
-    _focusNode.dispose(); // Dispose the focus node to avoid memory leaks
-    super.dispose();
-  }
-  void _unfocusKeyboard() {
-    _focusNode.unfocus();
-  }
 
     @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: GestureDetector(
-        onTap:()=> _unfocusKeyboard(),
+        onTap: ()=> FocusScope.of(context).unfocus(),
         child: Scaffold(
           appBar: AppBar(
             elevation: 3,
@@ -57,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 5,),
                   // Featured products
                   FeaturedProducts(),
-
+                  SizedBox(height: 15,),
                 ],
               ),
             ),
