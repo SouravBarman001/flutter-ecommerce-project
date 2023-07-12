@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/appbar_action_widgets.dart';
 import '../../widgets/best_seller.dart';
+import '../../widgets/featured_products.dart';
 import '../../widgets/happy_hour.dart';
 import '../../widgets/slider_widgets.dart';
 import '../../widgets/content/count_down_timer.dart';
@@ -40,15 +41,20 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           body:  const SafeArea(
-            child:Column(
-              children: [
-                SliderWidgets(),
-                SizedBox(height: 10,),
-                HappyHourTime(),
-                SizedBox(height: 5,),
-                // Bestsellers
-                BestSeller(),
-              ],
+            child:SingleChildScrollView(
+              child: Column(
+                children: [
+                  SliderWidgets(),
+                  SizedBox(height: 10,),
+                  HappyHourTime(),
+                  SizedBox(height: 5,),
+                  // Bestsellers
+                  BestSeller(),
+                  SizedBox(height: 5,),
+                  // Featured products
+                  FeaturedProducts(),
+                ],
+              ),
             ),
           ),
         ),

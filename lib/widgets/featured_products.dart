@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
 import 'content/list_view_items.dart';
-class BestSeller extends StatefulWidget {
-  const BestSeller({super.key});
+class FeaturedProducts extends StatefulWidget {
+  const FeaturedProducts({super.key});
 
   @override
-  State<BestSeller> createState() => _BestSellerState();
+  State<FeaturedProducts> createState() => _FeaturedProductsState();
 }
 
-class _BestSellerState extends State<BestSeller> {
+class _FeaturedProductsState extends State<FeaturedProducts> {
 
   int currentIndex = 0;
   List <String> productsImages = [
-    'images/products/product1.jpeg',
-    'images/products/product2.jpeg',
-    'images/products/product3.webp',
-    'images/products/product4.webp',
+    'images/featuredproducts/f1.webp',
+    'images/featuredproducts/f2.webp',
+    'images/featuredproducts/f3.webp',
+    'images/featuredproducts/f4.webp',
   ];
   final ScrollController scrollController = ScrollController();
 
@@ -33,13 +33,13 @@ class _BestSellerState extends State<BestSeller> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
-                  elevation: 3,
+                  elevation: 2,
                 ),
                 onPressed: () {
                   // Add your onPressed function here
                 },
                 child: const Text(
-                  'Best Seller',
+                  'Featured Products',
                   style: TextStyle(color: Colors.black),
                 ),
               ),
@@ -47,6 +47,7 @@ class _BestSellerState extends State<BestSeller> {
             ],
           ),
           Container(
+            //color: Colors.red,
             color: const Color(0xfffafafa),
             height: 250,
             child: RawScrollbar(
@@ -83,18 +84,20 @@ class _BestSellerState extends State<BestSeller> {
 
   }
 
-  // Widget buildIndicator(bool isSelected){
-  //   return Padding(
-  //     padding: const EdgeInsets.only(right: 3),
-  //     child: Container(
-  //       height: isSelected ? 10 : 10,
-  //       width: isSelected ? 10 : 10,
-  //       decoration: BoxDecoration(
-  //           shape: BoxShape.circle,
-  //           color: isSelected ? const Color(0xffde0201) : const Color(0xffd9d9d9)
-  //       ),
-  //     ),
-  //   );
-  // }
+// Widget buildIndicator(bool isSelected){
+//   return Padding(
+//     padding: const EdgeInsets.only(right: 3),
+//     child: Container(
+//       height: isSelected ? 10 : 10,
+//       width: isSelected ? 10 : 10,
+//       decoration: BoxDecoration(
+//           shape: BoxShape.circle,
+//           color: isSelected ? const Color(0xffde0201) : const Color(0xffd9d9d9)
+//       ),
+//     ),
+//   );
+// }
 
 }
+
+
