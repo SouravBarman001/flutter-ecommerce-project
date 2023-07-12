@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../../widgets/appbar_action_widgets.dart';
-import '../../widgets/best_seller.dart';
-import '../../widgets/category_product.dart';
-import '../../widgets/featured_products.dart';
-import '../../widgets/happy_hour.dart';
+import '../../widgets/content/add_banner_cart_page.dart';
 import '../../widgets/shopping_cart_app_bar_widget.dart';
-import '../../widgets/slider_widgets.dart';
+
 
 
 class ShoppingCartPage extends StatefulWidget {
@@ -36,16 +31,17 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
         onTap:()=> _unfocusKeyboard(),
         child: Scaffold(
           appBar: AppBar(
+            elevation: 0.5,
             backgroundColor: const Color(0xffdf0100),
             actions: const [
               ShoppingCartAppBarWidgets(),
             ],
           ),
-          body:  const SafeArea(
+          body:   const SafeArea(
             child:SingleChildScrollView(
               child: Column(
                 children: [
-                 Text('shopping cart'),
+                 AddBanner(),
 
                 ],
               ),
