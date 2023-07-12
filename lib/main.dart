@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/auth/login_page.dart';
@@ -11,6 +12,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LoginPage();
+    return const SplashScreen();
   }
 }
