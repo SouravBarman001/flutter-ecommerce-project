@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/appbar_action_widgets.dart';
 import '../../widgets/best_seller.dart';
+import '../../widgets/category_product.dart';
 import '../../widgets/featured_products.dart';
 import '../../widgets/happy_hour.dart';
 import '../../widgets/slider_widgets.dart';
@@ -51,8 +52,12 @@ class _HomePageState extends State<HomePage> {
                   // Bestsellers
                   BestSeller(),
                   SizedBox(height: 5,),
+                  // category products
+                  CategoryProduct(),
+                  SizedBox(height: 5,),
                   // Featured products
                   FeaturedProducts(),
+
                 ],
               ),
             ),
