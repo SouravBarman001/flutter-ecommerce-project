@@ -5,17 +5,18 @@ import '../../widgets/best_seller.dart';
 import '../../widgets/category_product.dart';
 import '../../widgets/featured_products.dart';
 import '../../widgets/happy_hour.dart';
+import '../../widgets/shopping_cart_app_bar_widget.dart';
 import '../../widgets/slider_widgets.dart';
 
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class ShoppingCartPage extends StatefulWidget {
+  const ShoppingCartPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ShoppingCartPage> createState() => _ShoppingCartPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ShoppingCartPageState extends State<ShoppingCartPage> {
   final FocusNode _focusNode = FocusNode();
 
   @override
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     _focusNode.unfocus();
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -37,25 +38,14 @@ class _HomePageState extends State<HomePage> {
           appBar: AppBar(
             backgroundColor: const Color(0xffdf0100),
             actions: const [
-              AppBarActionWidgets(),
+              ShoppingCartAppBarWidgets(),
             ],
           ),
           body:  const SafeArea(
             child:SingleChildScrollView(
               child: Column(
                 children: [
-                  SliderWidgets(),
-                  SizedBox(height: 10,),
-                  HappyHourTime(),
-                  SizedBox(height: 5,),
-                  // Bestsellers
-                  BestSeller(),
-                  SizedBox(height: 5,),
-                  // category products
-                  CategoryProduct(),
-                  SizedBox(height: 5,),
-                  // Featured products
-                  FeaturedProducts(),
+                 Text('shopping cart'),
 
                 ],
               ),

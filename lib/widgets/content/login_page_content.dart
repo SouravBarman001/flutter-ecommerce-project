@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../pages/general/home_page.dart';
 
 
@@ -99,7 +98,9 @@ class _LoginPageContentState extends State<LoginPageContent> {
             Expanded(
               child: ElevatedButton(
                 onPressed: (){
-                 Navigator.push(context, MaterialPageRoute(builder: (context)=>const HomePage()));
+                 //Get.to(()=>const HomePage(),transition: Transition.zoom);
+                 Navigator.pushReplacement(context,
+                     MaterialPageRoute(builder: (context)=>const HomePage()));
                 },
                 style: ElevatedButton.styleFrom(
 
