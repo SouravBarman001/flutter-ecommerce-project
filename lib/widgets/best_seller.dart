@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 class BestSeller extends StatefulWidget {
   const BestSeller({super.key});
 
@@ -27,6 +26,7 @@ class _BestSellerState extends State<BestSeller> {
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -41,6 +41,7 @@ class _BestSellerState extends State<BestSeller> {
                   style: TextStyle(color: Colors.black),
                 ),
               ),
+              TextButton(onPressed: (){}, child: const Text('More',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w700),)),
             ],
           ),
           Container(
