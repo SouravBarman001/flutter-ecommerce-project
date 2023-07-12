@@ -32,7 +32,7 @@ class _BestSellerState extends State<BestSeller> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor: Colors.red.shade400,
                   elevation: 3,
                 ),
                 onPressed: () {
@@ -40,7 +40,7 @@ class _BestSellerState extends State<BestSeller> {
                 },
                 child: const Text(
                   'Best Seller',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
               TextButton(onPressed: (){}, child: const Text('More',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w700),)),

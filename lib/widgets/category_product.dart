@@ -42,7 +42,7 @@ class _CategoryProductState extends State<CategoryProduct> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor: Colors.red.shade400,
                   elevation: 2,
                 ),
                 onPressed: () {
@@ -50,7 +50,8 @@ class _CategoryProductState extends State<CategoryProduct> {
                 },
                 child: const Text(
                   'Products category',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white
+                  ),
                 ),
               ),
               TextButton(onPressed: (){}, child: const Text('More',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w700),)),

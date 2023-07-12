@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
         onTap:()=> _unfocusKeyboard(),
         child: Scaffold(
           appBar: AppBar(
+            elevation: 3,
             backgroundColor: const Color(0xffdf0100),
             actions: const [
               AppBarActionWidgets(),

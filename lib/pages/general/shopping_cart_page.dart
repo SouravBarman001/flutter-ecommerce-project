@@ -40,8 +40,10 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
           body:   const SafeArea(
             child:SingleChildScrollView(
               child: Column(
+
                 children: [
                  AddBanner(),
+
 
                 ],
               ),

@@ -32,7 +32,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor:Colors.red.shade400,
                   elevation: 2,
                 ),
                 onPressed: () {
@@ -40,7 +40,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                 },
                 child: const Text(
                   'Featured Products',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
               TextButton(onPressed: (){}, child: const Text('More',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w700),)),
