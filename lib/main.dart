@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'pages/auth/login_page.dart';
 
 void main() {
+
   runApp(const MyApp());
 }
 
