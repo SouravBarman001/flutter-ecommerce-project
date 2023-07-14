@@ -7,7 +7,7 @@ class LoginApis{
       print(email);
       print(password);
       http.Response response = await http.post(
-        Uri.parse('https://www.procosplay.com/api/customer/login'),
+        Uri.parse('https://demo460.nop-station.com/api/customer/login'),
         headers: {
           'Content-Type': 'application/json',
           'DeviceId':'44b4d8cd-7a2d-4a5f-a0e2-798021f1e294'
