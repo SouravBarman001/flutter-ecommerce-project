@@ -6,8 +6,6 @@ import '../model/banner_model.dart';
 class BannerApis {
 
   static List<BannerModel> photoList=[];
-
-
   static Future<List<BannerModel>> fetchImages() async {
     final response = await http.get(
       Uri.parse('https://demo460.nop-station.com/api/slider/homepageslider'),

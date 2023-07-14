@@ -4,6 +4,7 @@ import '../../widgets/content/login_page_content.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+  static const String id = 'login';
 
   @override
   State<LoginPage> createState() => _LoginPageState();

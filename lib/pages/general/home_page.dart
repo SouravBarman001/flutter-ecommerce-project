@@ -11,7 +11,7 @@ import '../../widgets/slider_widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
+  static const String id = 'home';
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -38,6 +38,9 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   SliderWidgets(),
                   SizedBox(height: 10,),
+                  FeaturedProducts(),
+                  SizedBox(height: 10,),
+
                   HappyHourTime(),
                   SizedBox(height: 5,),
                   // Bestsellers
@@ -45,10 +48,9 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 5,),
                   // category products
                   CategoryProduct(),
-                  SizedBox(height: 5,),
-                  // Featured products
-                  FeaturedProducts(),
                   SizedBox(height: 15,),
+                  // Featured products
+
                 ],
               ),
             ),

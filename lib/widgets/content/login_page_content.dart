@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import '../../apis/login_apis.dart';
-import '../../pages/general/home_page.dart';
+import 'package:provider/provider.dart';
+import '../../controller/login_page_controller.dart';
 
 
 class LoginPageContent extends StatefulWidget {
@@ -23,13 +23,9 @@ class _LoginPageContentState extends State<LoginPageContent> {
   String? passValue;
 
   // Navigate to home page
-  void navigateToHomePage(){
-    Navigator.pushReplacement(context,
-        MaterialPageRoute(builder: (context)=>const HomePage()));
-  }
+
 
   // show snake bar
-
   void showSnakeBar(BuildContext context,String msg){
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(backgroundColor:Colors.redAccent,
@@ -37,13 +33,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
     );
   }
 
-  Future<void> userLogin(String emailController, String passController) async {
-    bool loggIn = await LoginApis.loginPerform(emailController,passController);
-    if(loggIn){
-      print('Login Successfully');
-      navigateToHomePage();
-    }
-  }
+
 
   Widget buildCustomPrefixIcon({required IconData iconfrom}) {
     return Container(
@@ -141,22 +131,15 @@ class _LoginPageContentState extends State<LoginPageContent> {
                   onPressed: (){
                    //Get.to(()=>const HomePage(),transition: Transition.zoom);
                     if (_formKey.currentState!.validate()) {
-                      // If the form is valid, display a snackbar. In the real world,
-                      // you'd often call a server or save the information in a database.
 
-                     userLogin(emailController.text.toString(),passController.text.toString());
-
-                      // print(emailController.text.toString());
-                      // print(passController.text.toString());
-
+                      context.read<LoginPageController>().userLogin(emailController.text.toString(),passController.text.toString());
 
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(backgroundColor:Colors.cyan,
                             content: Text('Processing Data')),
                       );
                     }
-                   // Navigator.pushReplacement(context,
-                   //     MaterialPageRoute(builder: (context)=>const HomePage()));
+
                   },
                   style: ElevatedButton.styleFrom(
 

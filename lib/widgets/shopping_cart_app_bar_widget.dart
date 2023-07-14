@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
+import '../pages/locator.dart';
 import '../pages/general/shopping_cart_page.dart';
+import 'package:ecommerceapp/services/navigation_services.dart';
 
 class ShoppingCartAppBarWidgets extends StatefulWidget {
   const ShoppingCartAppBarWidgets({super.key});
@@ -32,7 +33,8 @@ class _ShoppingCartAppBarWidgetsState extends State<ShoppingCartAppBarWidgets> {
             ),
 
             onPressed: () {
-
+              // Navigator.pop(context);
+              locator<NavigationServices>().goBack();
             },
             icon: const Icon(
               Icons.close_outlined,

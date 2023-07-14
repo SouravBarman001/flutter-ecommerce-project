@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../pages/general/shopping_cart_page.dart';
+import 'package:ecommerceapp/controller/home_page_controller.dart';
 
 class AppBarActionWidgets extends StatefulWidget {
   const AppBarActionWidgets({super.key});
@@ -22,7 +21,8 @@ class _AppBarActionWidgetsState extends State<AppBarActionWidgets> {
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {
               // Perform cart action
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> const ShoppingCartPage()));
+              HomePageController homepageController = HomePageController();
+              homepageController.goToShoppingCart();
             },
           ),
           Expanded(
