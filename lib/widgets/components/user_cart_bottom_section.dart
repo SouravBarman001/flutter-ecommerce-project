@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class UserCardBottomSection extends StatefulWidget {
   const UserCardBottomSection({
     super.key,
@@ -16,8 +17,7 @@ class _UserCardBottomSectionState extends State<UserCardBottomSection> {
       child: Column(
         children: [
           Padding(
-            padding:
-            const EdgeInsets.only(left: 15, right: 15, top: 12),
+            padding: const EdgeInsets.only(left: 15, right: 15, top: 12),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -68,8 +68,7 @@ class _UserCardBottomSectionState extends State<UserCardBottomSection> {
           ),
           Expanded(
             child: Container(
-
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: const [
                   BoxShadow(
@@ -86,7 +85,7 @@ class _UserCardBottomSectionState extends State<UserCardBottomSection> {
               //   color: Colors.red,
               //height: 15,
               width: double.infinity,
-              child:  Row(
+              child: Row(
                 children: [
                   const Expanded(
                     child: TextField(
@@ -99,21 +98,24 @@ class _UserCardBottomSectionState extends State<UserCardBottomSection> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 6),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
                     child: Container(
                       // padding: const EdgeInsets.all(1),
-                      decoration:  BoxDecoration(
+                      decoration: BoxDecoration(
                         color: const Color(0xfffca15e),
                         borderRadius: BorderRadius.circular(8),
                       ),
 
                       child: const TextButton(
                         onPressed: null,
-                        child: Text('Apply Coupon',style: TextStyle(color: Colors.white),),
+                        child: Text(
+                          'Apply Coupon',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
@@ -127,7 +129,7 @@ class _UserCardBottomSectionState extends State<UserCardBottomSection> {
           ),
           Expanded(
             child: Container(
-              decoration:  BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: const [
                   BoxShadow(
@@ -144,7 +146,7 @@ class _UserCardBottomSectionState extends State<UserCardBottomSection> {
               //   color: Colors.red,
               //height: 15,
               width: double.infinity,
-              child:  Row(
+              child: Row(
                 children: [
                   const Expanded(
                     child: TextField(
@@ -157,21 +159,24 @@ class _UserCardBottomSectionState extends State<UserCardBottomSection> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 6),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 5, vertical: 6),
                     child: Container(
                       // padding: const EdgeInsets.all(1),
-                      decoration:  BoxDecoration(
+                      decoration: BoxDecoration(
                         color: const Color(0xff287ece),
                         borderRadius: BorderRadius.circular(8),
                       ),
 
                       child: const TextButton(
                         onPressed: null,
-                        child: Text('Apply Loyalty',style: TextStyle(color: Colors.white),),
+                        child: Text(
+                          'Apply Loyalty',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
-
                 ],
               ),
             ),
@@ -190,26 +195,36 @@ class _UserCardBottomSectionState extends State<UserCardBottomSection> {
                   child: Container(
                     alignment: Alignment.center,
                     height: double.infinity,
-                    color:const Color(0xff9de6b4) ,
+                    color: const Color(0xff9de6b4),
                     //  color: const Color(0xffdf0000),
-                    child: const Text('Total : Tk 760',style: TextStyle(
-                      fontSize: 18,fontWeight: FontWeight.w500,
-                    ),),
-                  ),),
+                    child: const Text(
+                      'Total : Tk 760',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ),
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
                     height: double.infinity,
                     //color:const Color(0xff9de6b4) ,
                     color: const Color(0xffdf0000),
-                    child: const Text('Place Order',style: TextStyle(
-                      fontSize: 18,fontWeight: FontWeight.w500,color: Colors.white,
-                    ),),
-                  ),),
+                    child: const Text(
+                      'Place Order',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
-
         ],
       ),
     );

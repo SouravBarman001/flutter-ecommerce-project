@@ -15,7 +15,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
 
   // Initialize SharedPreferences
 
-  final navigatorKey = GlobalKey<NavigatorState>();
+  // final navigatorKey = GlobalKey<NavigatorState>();
   TextEditingController emailController = TextEditingController();
   TextEditingController passController = TextEditingController();
   final _formKey = GlobalKey<FormState>();

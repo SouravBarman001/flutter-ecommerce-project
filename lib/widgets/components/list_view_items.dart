@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 class ListViewItems extends StatelessWidget {
   final List<String> productsImages;
@@ -52,11 +53,12 @@ class ListViewItems extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('1-3 hours Delivery'),
-                const SizedBox(
-                  height: 4,
+                const AutoSizeText(
+                  'Fazli Mango Fromsssssssssss Rassssssssssaajshahi',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  maxLines: 2,
                 ),
-                const Text('Mango'),
+
                 const SizedBox(
                   height: 4,
                 ),
