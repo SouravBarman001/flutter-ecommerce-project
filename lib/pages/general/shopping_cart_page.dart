@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../services/navigation_services.dart';
-import '../../widgets/content/add_banner_cart_page.dart';
-import '../../widgets/content/user_cart_bottom_section.dart';
+import '../../widgets/components/add_banner_cart_page.dart';
+import '../../widgets/components/user_cart_bottom_section.dart';
 import '../../widgets/shopping_cart_app_bar_widget.dart';
 import '../../widgets/user_cart_items_widgets.dart';
 import '../locator.dart';

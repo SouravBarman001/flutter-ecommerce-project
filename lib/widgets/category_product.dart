@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'content/list_view_items.dart';
+import 'components/list_view_items.dart';
 class CategoryProduct extends StatefulWidget {
   const CategoryProduct({super.key});
 
@@ -61,21 +61,14 @@ class _CategoryProductState extends State<CategoryProduct> {
             //color: Colors.red,
             color: const Color(0xfffafafa),
             height: 250,
-            child: RawScrollbar(
-              controller: scrollController,
-              thumbColor: Colors.redAccent,
-              radius: const Radius.circular(8),
-              crossAxisMargin: 2,
-              child: ListView.builder(
+            child: ListView.builder(
 
-                scrollDirection: Axis.horizontal,
-                itemCount: productsImages.length,
-                itemBuilder: (context, index) {
-                  return ListViewItems(productsImages: productsImages,index: index);
+              scrollDirection: Axis.horizontal,
+              itemCount: productsImages.length,
+              itemBuilder: (context, index) {
+                return ListViewItems(productsImages: productsImages,index: index);
 
-                },
-              ),
-
+              },
             ),
 
           ),

@@ -16,7 +16,8 @@ class _AppBarActionWidgetsState extends State<AppBarActionWidgets> {
     return   Expanded(
       child: Row(
         children: [
-          IconButton(onPressed: (){}, icon: const Icon(Icons.menu),),
+
+          const SizedBox(width: 38,),
           IconButton(
             icon: const Icon(Icons.shopping_cart),
             onPressed: () {

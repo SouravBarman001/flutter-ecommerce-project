@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'content/list_view_items.dart';
+import '../pages/locator.dart';
+import '../services/scrollview_controller_services.dart';
+import 'components//list_view_items.dart';
 class BestSeller extends StatefulWidget {
   const BestSeller({super.key});
 
@@ -17,7 +19,6 @@ class _BestSellerState extends State<BestSeller> {
     'images/products/product3.webp',
     'images/products/product4.webp',
   ];
-  final ScrollController scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,21 +50,13 @@ class _BestSellerState extends State<BestSeller> {
           Container(
             color: const Color(0xfffafafa),
             height: 250,
-            child: RawScrollbar(
-              controller: scrollController,
-              thumbColor: Colors.redAccent,
-              radius: const Radius.circular(8),
-              crossAxisMargin: 2,
-              child: ListView.builder(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: productsImages.length,
+              itemBuilder: (context, index) {
+                return ListViewItems(productsImages: productsImages,index: index,);
 
-                scrollDirection: Axis.horizontal,
-                itemCount: productsImages.length,
-                itemBuilder: (context, index) {
-                  return ListViewItems(productsImages: productsImages,index: index,);
-
-                },
-              ),
-
+              },
             ),
 
           ),

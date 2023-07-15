@@ -1,4 +1,5 @@
 import 'package:ecommerceapp/pages/auth/login_page.dart';
+import 'package:ecommerceapp/pages/dummy_test.dart';
 import 'package:ecommerceapp/pages/general/home_page.dart';
 import 'package:ecommerceapp/pages/general/shopping_cart_page.dart';
 import 'package:ecommerceapp/services/navigation_services.dart';

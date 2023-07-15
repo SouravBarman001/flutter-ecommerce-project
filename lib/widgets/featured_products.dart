@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'content/list_view_items.dart';
+import '../apis/featured_products_apis.dart';
+import '../model/featured_product_model.dart';
+import '../pages/locator.dart';
+import '../services/scrollview_controller_services.dart';
+import 'components/reusable_listview_items_container.dart';
 class FeaturedProducts extends StatefulWidget {
   const FeaturedProducts({super.key});
 
@@ -10,13 +13,21 @@ class FeaturedProducts extends StatefulWidget {
 
 class _FeaturedProductsState extends State<FeaturedProducts> {
 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FeaturedProductApis.fetchFeaturedProductsData();
+  }
+
   int currentIndex = 0;
-  List <String> productsImages = [
-    'images/featuredproducts/f1.webp',
-    'images/featuredproducts/f2.webp',
-    'images/featuredproducts/f3.webp',
-    'images/featuredproducts/f4.webp',
-  ];
+  // List <String> productsImages = [
+  //   'images/featuredproducts/f1.webp',
+  //   'images/featuredproducts/f2.webp',
+  //   'images/featuredproducts/f3.webp',
+  //   'images/featuredproducts/f4.webp',
+  // ];
   final ScrollController scrollController = ScrollController();
 
   @override
@@ -47,35 +58,35 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
             ],
           ),
           Container(
-            //color: Colors.red,
             color: const Color(0xfffafafa),
             height: 250,
-            child: RawScrollbar(
-              controller: scrollController,
-              thumbColor: Colors.redAccent,
-              radius: const Radius.circular(8),
-              crossAxisMargin: 2,
-              child: ListView.builder(
+            child: FutureBuilder<List<FeaturedProduct>>(
+              future: FeaturedProductApis.fetchFeaturedProductsData(),
+              builder: (context, AsyncSnapshot<List<FeaturedProduct>> snapshot) {
+                if (snapshot.hasData) {
+                  final productsImages = snapshot.data!;
 
-                scrollDirection: Axis.horizontal,
-                itemCount: productsImages.length,
-                itemBuilder: (context, index) {
-                  return ListViewItems(productsImages: productsImages,index: index,);
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: productsImages.length,
+                    itemBuilder: (context, index) {
+                      final featuredProduct = productsImages[index];
 
-                },
-              ),
-
+                      return ReusableListViewItemContainer(featuredProduct: featuredProduct);
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  return const Center(child: RefreshProgressIndicator());
+                }
+              },
             ),
-
           ),
+
+
           const SizedBox(height: 10,),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     for(var i = 0;i<productsImages.length;i++)
-          //       buildIndicator(currentIndex == i)
-          //   ],
-          // ),
+
 
         ],
       ),
@@ -84,20 +95,5 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
 
   }
 
-// Widget buildIndicator(bool isSelected){
-//   return Padding(
-//     padding: const EdgeInsets.only(right: 3),
-//     child: Container(
-//       height: isSelected ? 10 : 10,
-//       width: isSelected ? 10 : 10,
-//       decoration: BoxDecoration(
-//           shape: BoxShape.circle,
-//           color: isSelected ? const Color(0xffde0201) : const Color(0xffd9d9d9)
-//       ),
-//     ),
-//   );
-// }
 
 }
-
-

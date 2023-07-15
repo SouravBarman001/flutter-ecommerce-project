@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'content/count_down_timer.dart';
+import 'components/count_down_timer.dart';
 
 class HappyHourTime extends StatefulWidget {
   const HappyHourTime({super.key});
