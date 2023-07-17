@@ -21,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     context.read<SplashScreenController>().checkLogin();
+
   }
 
 
@@ -31,6 +32,7 @@ class _SplashScreenState extends State<SplashScreen> {
       home: Scaffold(
         body: Center(
           child: AnimatedSplashScreen(
+            duration: 2500,
             splashIconSize: 200.0,
             splash: 'images/splash/two.gif',
              nextScreen:  context.read<SplashScreenController>().loginTrue == true ? const HomePage() : const LoginPage(),

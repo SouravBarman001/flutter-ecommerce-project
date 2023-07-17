@@ -39,6 +39,7 @@ class SideNavDrawer extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.w400,
                   fontSize: 20,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 20,),

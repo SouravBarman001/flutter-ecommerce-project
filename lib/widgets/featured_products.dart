@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../apis/featured_products_apis.dart';
+import '../controller/cart_controller.dart';
 import '../model/featured_product_model.dart';
 import '../pages/locator.dart';
 import '../services/scrollview_controller_services.dart';
@@ -32,6 +34,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       padding: const EdgeInsets.only(
         left: 12,
@@ -72,7 +75,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                     itemBuilder: (context, index) {
                       final featuredProduct = productsImages[index];
 
-                      return ReusableListViewItemContainer(featuredProduct: featuredProduct);
+                      return ReusableListViewItemContainer(featuredProduct: featuredProduct, index: index,);
                     },
                   );
                 } else if (snapshot.hasError) {

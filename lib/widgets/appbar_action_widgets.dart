@@ -1,5 +1,11 @@
+
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerceapp/controller/home_page_controller.dart';
+import 'package:badges/badges.dart' as badges;
+import 'package:provider/provider.dart';
+
+import '../controller/cart_controller.dart';
 
 class AppBarActionWidgets extends StatefulWidget {
   const AppBarActionWidgets({super.key});
@@ -13,19 +19,39 @@ class _AppBarActionWidgetsState extends State<AppBarActionWidgets> {
 
   @override
   Widget build(BuildContext context) {
+
     return   Expanded(
       child: Row(
         children: [
 
-          const SizedBox(width: 38,),
-          IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            onPressed: () {
-              // Perform cart action
-              HomePageController homepageController = HomePageController();
-              homepageController.goToShoppingCart();
+          const SizedBox(width: 48,),
+          Consumer<CartProvider>(
+            builder: (context, value , child){
+              return InkWell(
+                onTap: (){
+
+                  if(value.getCounter() == 0 ){
+
+                  }else{
+                    // Perform cart action
+                    HomePageController homepageController = HomePageController();
+                    homepageController.goToShoppingCart();
+                  }
+
+                },
+                child:  Center(
+                    child: badges.Badge(
+                      badgeContent: Text(value.getCounter().toString(),style: const TextStyle(color: Colors.white)),
+
+                      child: const Icon(Icons.shopping_cart_outlined),
+                    )
+                ),
+              );
             },
           ),
+
+          const SizedBox(width: 6,),
+
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),

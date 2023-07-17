@@ -1,5 +1,4 @@
 import 'package:ecommerceapp/pages/auth/login_page.dart';
-import 'package:ecommerceapp/pages/dummy_test.dart';
 import 'package:ecommerceapp/pages/general/home_page.dart';
 import 'package:ecommerceapp/pages/general/shopping_cart_page.dart';
 import 'package:ecommerceapp/services/navigation_services.dart';
@@ -7,6 +6,7 @@ import 'package:ecommerceapp/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'controller/cart_controller.dart';
 import 'controller/login_page_controller.dart';
 import 'controller/splash_screen_controller.dart';
 import 'pages/locator.dart';
@@ -17,6 +17,8 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_)=>SplashScreenController()),
         ChangeNotifierProvider(create: (_)=>LoginPageController()),
+        ChangeNotifierProvider(create: (_)=>CartProvider()),
+
       ],
       child: const MyApp()));
 }

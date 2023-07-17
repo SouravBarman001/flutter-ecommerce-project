@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../controller/cart_controller.dart';
 import '../pages/locator.dart';
 import '../pages/general/shopping_cart_page.dart';
 import 'package:ecommerceapp/services/navigation_services.dart';
@@ -13,6 +15,9 @@ class ShoppingCartAppBarWidgets extends StatefulWidget {
 class _ShoppingCartAppBarWidgetsState extends State<ShoppingCartAppBarWidgets> {
   String? selectedOption;
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return   Expanded(
@@ -21,10 +26,15 @@ class _ShoppingCartAppBarWidgetsState extends State<ShoppingCartAppBarWidgets> {
           const SizedBox(width: 15,),
           const Icon(Icons.add_shopping_cart_sharp,size: 23,),
           const SizedBox(width: 7,),
-          const Text('4 Items',style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-          ),),
+          Consumer<CartProvider>(
+            builder: (context, value , child){
+              return Text('${value.getCounter().toString()} Items',style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),);
+            },
+          ),
+
           Expanded(child: Container()),
           ElevatedButton.icon(
             style: ElevatedButton.styleFrom(

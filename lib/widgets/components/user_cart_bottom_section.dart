@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../controller/cart_controller.dart';
 
 class UserCardBottomSection extends StatefulWidget {
   const UserCardBottomSection({
-    super.key,
+    super.key
   });
 
   @override
@@ -12,6 +15,10 @@ class UserCardBottomSection extends StatefulWidget {
 class _UserCardBottomSectionState extends State<UserCardBottomSection> {
   @override
   Widget build(BuildContext context) {
+    //final accessCart  = context.read<CartProvider>();
+    // final cart  = Provider.of<CartProvider>(context);
+
+
     return Expanded(
       flex: 1,
       child: Column(
@@ -197,13 +204,21 @@ class _UserCardBottomSectionState extends State<UserCardBottomSection> {
                     height: double.infinity,
                     color: const Color(0xff9de6b4),
                     //  color: const Color(0xffdf0000),
-                    child: const Text(
-                      'Total : Tk 760',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500,
-                      ),
+                    child:  Consumer<CartProvider>(
+                      builder: (context, value , child){
+                        return Text('Total : \$ ${value.getTotalPrice().toStringAsFixed(2)}',style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),);
+                      },
                     ),
+                    //Text(
+                    //   '',
+                    //   style: const TextStyle(
+                    //     fontSize: 18,
+                    //     fontWeight: FontWeight.w500,
+                    //   ),
+                    // ),
                   ),
                 ),
                 Expanded(
