@@ -1,5 +1,11 @@
 import 'dart:convert';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
+
+import '../pages/auth/login_page.dart';
+import '../pages/locator.dart';
+import '../services/navigation_services.dart';
 
 class LoginApis{
   static Future<bool> loginPerform(String email, String password) async {
@@ -38,4 +44,38 @@ class LoginApis{
     }
     return false;
   }
+
+
+  static Future<UserCredential?> signInWithGoogle() async {
+
+    try{
+      print('inside auth');
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    }catch(e){
+      print(e);
+    }
+    return null;
+  }
+
+//   static void signOut() async{
+//     await FirebaseAuth.instance.signOut();
+//     await GoogleSignIn().signOut().then((value){
+//       locator<NavigationServices>().navigateTo(LoginPage.id);
+//
+//     });
+// }
+
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import '../../apis/push_notifications.dart';
 import '../../widgets/appbar_action_widgets.dart';
 import '../../widgets/best_seller.dart';
 import '../../widgets/category_product.dart';
@@ -17,6 +18,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _advancedDrawerController = AdvancedDrawerController();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    PushNotification.getFirebaseMsgtoken();
+  }
 
   @override
   Widget build(BuildContext context) {

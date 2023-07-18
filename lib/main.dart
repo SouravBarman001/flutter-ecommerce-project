@@ -11,7 +11,14 @@ import 'controller/login_page_controller.dart';
 import 'controller/splash_screen_controller.dart';
 import 'pages/locator.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   setupLocator();
   runApp(MultiProvider(
       providers: [

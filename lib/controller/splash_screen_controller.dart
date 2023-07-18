@@ -7,9 +7,9 @@ import '../services/navigation_services.dart';
 
 class SplashScreenController extends ChangeNotifier{
 
-   bool loginTrue = false;
+  bool loginTrue = false;
 
-   Future<void> checkLogin() async {
+  Future<void> checkLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var loginValue = prefs.getBool('YesLogin');
     if (loginValue != null && loginValue) {
@@ -22,12 +22,12 @@ class SplashScreenController extends ChangeNotifier{
 
   }
   void navigationCheck(bool login){
-     if(login){
-       locator<NavigationServices>().navigateTo(HomePage.id);
-     }else{
-       locator<NavigationServices>().navigateTo(LoginPage.id);
+    if(login){
+      locator<NavigationServices>().navigateTo(HomePage.id);
+    }else{
+      locator<NavigationServices>().navigateTo(LoginPage.id);
 
-     }
+    }
   }
 
 }

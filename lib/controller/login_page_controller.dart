@@ -20,7 +20,7 @@ class LoginPageController extends ChangeNotifier {
       print('Login Successfully');
       navigateToHomePage();
 
-     // notifyListeners();
+      // notifyListeners();
     }
   }
 
