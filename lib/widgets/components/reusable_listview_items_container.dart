@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerceapp/pages/dummy/repository_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,7 +14,7 @@ class ReusableListViewItemContainer extends StatelessWidget {
     required this.featuredProduct, required this.index,
   });
 
-  final FeaturedProduct featuredProduct;
+  final RepositoryData featuredProduct;
   final int index;
 
 
@@ -47,9 +49,11 @@ class ReusableListViewItemContainer extends StatelessWidget {
             height: 120,
             width: 150,
             child: ClipRRect(
-              child: Image.network(
-                featuredProduct.imageUrl,
-                fit: BoxFit.fill,
+              child: CachedNetworkImage(
+                imageUrl: featuredProduct.imageUrl.toString(),
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
           ),

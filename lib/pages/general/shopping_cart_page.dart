@@ -1,5 +1,6 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -105,10 +106,11 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                                                       ),
                                                     )),
                                                 ClipRRect(
-                                                  child: Image.network(
-                                                    featuredProduct.image.toString(),
-                                                    height: 100,
-                                                    width: 60,
+                                                  child: CachedNetworkImage(
+                                                    imageUrl: featuredProduct.image.toString(),
+                                                    progressIndicatorBuilder: (context, url, downloadProgress) =>
+                                                        Center(child: CircularProgressIndicator(value: downloadProgress.progress)),
+                                                    errorWidget: (context, url, error) => const Icon(Icons.error),
                                                   ),
                                                 ),
                                                 const SizedBox(

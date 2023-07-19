@@ -1,8 +1,13 @@
+import 'dart:async';
+
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:ecommerceapp/pages/auth/login_page.dart';
 import 'package:ecommerceapp/pages/general/home_page.dart';
+import 'package:ecommerceapp/pages/locator.dart';
+import 'package:ecommerceapp/services/navigation_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'controller/splash_screen_controller.dart';
 
@@ -20,8 +25,16 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<SplashScreenController>().checkLogin();
 
+    Timer(const Duration(seconds: 3), () {
+      SplashScreenController().checkUserCredentials().then((login) {
+        if (login) {
+          locator<NavigationServices>().navigateTo(HomePage.id);
+        } else {
+          locator<NavigationServices>().navigateTo(LoginPage.id);
+        }
+      });
+    });
   }
 
 
@@ -30,15 +43,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: const Color(0xffffffff),
         body: Center(
-          child: AnimatedSplashScreen(
-            duration: 2500,
-            splashIconSize: 200.0,
-            splash: 'images/splash/two.gif',
-            nextScreen:  context.read<SplashScreenController>().loginTrue == true ? const HomePage() : const LoginPage(),
-            // nextScreen: const LoginPage(),
-            splashTransition: SplashTransition.fadeTransition,
-          ),
+          child:Image.asset( 'images/splash/two.gif',width: 300,height: 300,),
         ),
       ),
     );

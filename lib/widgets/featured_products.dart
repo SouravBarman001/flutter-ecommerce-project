@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import '../apis/featured_products_apis.dart';
 import '../controller/cart_controller.dart';
 import '../model/featured_product_model.dart';
+import '../pages/dummy/dummy_api_call.dart';
+import '../pages/dummy/repository_data.dart';
 import '../pages/locator.dart';
 import '../services/scrollview_controller_services.dart';
 import 'components/reusable_listview_items_container.dart';
@@ -15,12 +17,15 @@ class FeaturedProducts extends StatefulWidget {
 
 class _FeaturedProductsState extends State<FeaturedProducts> {
 
+  late Future<List<RepositoryData>> _repositoryListFuture;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    FeaturedProductApis.fetchFeaturedProductsData();
+    // FeaturedProductApis.fetchFeaturedProductsData();
+    _repositoryListFuture = DummyApiCall().apiCall();
+
   }
 
   int currentIndex = 0;
@@ -34,6 +39,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
 
   @override
   Widget build(BuildContext context) {
+  //  DummyApiCall dummyApiCall = DummyApiCall();
 
     return Container(
       padding: const EdgeInsets.only(
@@ -63,17 +69,17 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
           Container(
             color: const Color(0xfffafafa),
             height: 250,
-            child: FutureBuilder<List<FeaturedProduct>>(
-              future: FeaturedProductApis.fetchFeaturedProductsData(),
-              builder: (context, AsyncSnapshot<List<FeaturedProduct>> snapshot) {
+            child: FutureBuilder<List<RepositoryData>>(
+              future: _repositoryListFuture,
+              builder: (context, AsyncSnapshot<List<RepositoryData>> snapshot) {
                 if (snapshot.hasData) {
-                  final productsImages = snapshot.data!;
+                  final repositoryList = snapshot.data!;
 
                   return ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: productsImages.length,
+                    itemCount: repositoryList.length,
                     itemBuilder: (context, index) {
-                      final featuredProduct = productsImages[index];
+                      final featuredProduct = repositoryList[index];
 
                       return ReusableListViewItemContainer(featuredProduct: featuredProduct, index: index,);
                     },

@@ -8,6 +8,8 @@ import '../../widgets/components/side_nav_drawer.dart';
 import '../../widgets/featured_products.dart';
 import '../../widgets/happy_hour.dart';
 import '../../widgets/slider_widgets.dart';
+import '../dummy/dummy_api_call.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,12 +20,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _advancedDrawerController = AdvancedDrawerController();
-@override
+
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
     PushNotification.getFirebaseMsgtoken();
+
   }
+
+  // Future<List<RepositoryData>> apiCall() async {
+  //   DummyApiCall dummyApiCall = DummyApiCall();
+  //   await dummyApiCall.insertDataToHive();
+  //   return DummyApiCall.repositoryList;
+  // }
 
   @override
   Widget build(BuildContext context) {

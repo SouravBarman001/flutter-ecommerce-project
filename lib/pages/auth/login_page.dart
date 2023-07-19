@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           color: Colors.white,
                           child: const Padding(
-                            padding: EdgeInsets.only(left: 40,right: 40,top: 40,bottom:10),
+                            padding: EdgeInsets.only(left: 40,right: 40,top: 30,),
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [

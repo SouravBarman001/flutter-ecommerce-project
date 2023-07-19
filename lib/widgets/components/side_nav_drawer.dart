@@ -1,3 +1,4 @@
+import 'package:ecommerceapp/apis/login_apis.dart';
 import 'package:flutter/material.dart';
 
 class SideNavDrawer extends StatelessWidget {
@@ -55,10 +56,15 @@ class SideNavDrawer extends StatelessWidget {
                 leading: const Icon(Icons.settings),
                 title: const Text('Settings'),
               ),
-              ListTile(
-                onTap: () {},
-                leading: const Icon(Icons.logout),
-                title: const Text('Logout'),
+              GestureDetector(
+                onTap: (){
+                  LoginApis.signOut();
+                },
+                child: ListTile(
+                  onTap: () {},
+                  leading: const Icon(Icons.logout),
+                  title: const Text('Logout'),
+                ),
               ),
               const Spacer(),
               DefaultTextStyle(

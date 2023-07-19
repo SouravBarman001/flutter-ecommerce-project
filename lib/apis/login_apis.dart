@@ -70,12 +70,14 @@ class LoginApis{
     return null;
   }
 
-//   static void signOut() async{
-//     await FirebaseAuth.instance.signOut();
-//     await GoogleSignIn().signOut().then((value){
-//       locator<NavigationServices>().navigateTo(LoginPage.id);
-//
-//     });
-// }
+  static void signOut() async{
+    print('inside logout');
+    await FirebaseAuth.instance.signOut();
+    await GoogleSignIn().signOut().then((value){
+      locator<NavigationServices>().navigateTo(LoginPage.id);
+
+    });
+}
+
 
 }

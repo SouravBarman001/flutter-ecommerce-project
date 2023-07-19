@@ -1,11 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../apis/login_apis.dart';
 import '../../controller/login_page_controller.dart';
-import '../../pages/general/home_page.dart';
-import '../../pages/locator.dart';
-import '../../services/navigation_services.dart';
 
 
 class LoginPageContent extends StatefulWidget {
@@ -161,49 +157,44 @@ class _LoginPageContentState extends State<LoginPageContent> {
             ],
           ),
           const SizedBox(height: 10,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: (){
-                    //Get.to(()=>const HomePage(),transition: Transition.zoom);
-                    handleGoogleBtnClick();
-
+          SizedBox(
+            height: 80,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(width: 15,),
+                InkWell(
+                  onTap: (){
+                    context.read<LoginPageController>().handleGoogleBtnClick();
                   },
-                  style: ElevatedButton.styleFrom(
-
-                    backgroundColor:  const Color(0xffc5dca3),
-                    padding: const EdgeInsets.all(18.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(35.0),
-                    ),
-                  ),
-                  child: const Text('Login with google',style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),),
+                  child: SizedBox(
+                      child: Image.asset(
+                    'images/google.png',
+                    width: 40.0,
+                    height: 40.0,
+                    fit: BoxFit.cover,
+                  ),),
                 ),
+                const SizedBox(width: 25,),
+                SizedBox(
+                  child: Image.asset(
+                    'images/facebook.png',
+                    width: 40.0,
+                    height: 40.0,
+                    fit: BoxFit.cover,
+                  ),),
 
-              ),
-
-            ],
+              ],
+            ),
           ),
          // const SizedBox(height: 20,),
           // const SizedBox(),
+        //  const Spacer(),
+         // const SizedBox(height: 10,),
         ],
       ),
     );
   }
-  handleGoogleBtnClick(){
-    LoginApis.signInWithGoogle().then((user){
-      if(user != null){
-        print('\n ${user.user}');
-        print('\n ${user.additionalUserInfo}');
-
-        locator<NavigationServices>().navigateTo(HomePage.id);
-
-      }
-    } );
-  }
-
-
-
 }
+
+//

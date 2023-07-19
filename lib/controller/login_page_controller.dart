@@ -14,17 +14,39 @@ class LoginPageController extends ChangeNotifier {
   Future<void> userLogin(String emailController, String passController) async {
     bool loggedIn = await LoginApis.loginPerform(emailController, passController);
     if (loggedIn) {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setBool('YesLogin', true);
-      print(' shared preference set check : ${prefs.getBool('YesLogin')}');
+      saveUserCredentials(emailController,passController);
       print('Login Successfully');
-      navigateToHomePage();
 
-      // notifyListeners();
     }
+  }
+
+   Future<void> saveUserCredentials(String email, String password) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('email', email);
+    await prefs.setString('password', password);
+    navigateToHomePage();
   }
 
   void navigateToHomePage() {
     navigationServices.navigateTo(HomePage.id);
   }
+   void handleGoogleBtnClick(){
+    LoginApis.signInWithGoogle().then((user) async {
+      if(user != null){
+
+
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('email', user.user.toString());
+        await prefs.setString('password', user.additionalUserInfo.toString());
+
+
+        print('\n ${user.user}');
+        print('\n ${user.additionalUserInfo}');
+
+        locator<NavigationServices>().navigateTo(HomePage.id);
+
+      }
+    } );
+  }
+
 }

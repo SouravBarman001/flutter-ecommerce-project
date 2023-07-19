@@ -1,9 +1,14 @@
 import 'package:ecommerceapp/pages/auth/login_page.dart';
+import 'package:ecommerceapp/pages/dummy/dummy_list_view.dart';
+import 'package:ecommerceapp/pages/dummy/dummy_product.dart';
+import 'package:ecommerceapp/pages/dummy/f_product.dart';
 import 'package:ecommerceapp/pages/general/home_page.dart';
 import 'package:ecommerceapp/pages/general/shopping_cart_page.dart';
 import 'package:ecommerceapp/services/navigation_services.dart';
 import 'package:ecommerceapp/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'controller/cart_controller.dart';
@@ -17,8 +22,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  var directory = await getApplicationDocumentsDirectory() ;
+  Hive.init(directory.path);
+  Hive.registerAdapter(FProductAdapter()) ;
+  await Hive.openBox<FProduct>('fbox');
 
+  await Firebase.initializeApp();
   setupLocator();
   runApp(MultiProvider(
       providers: [

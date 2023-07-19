@@ -56,11 +56,18 @@ dependencies:
   firebase_messaging:
   firebase_auth: ^4.6.3
   google_sign_in: ^6.1.4
+  cached_network_image: ^3.2.3
+  hive:
+  hive_flutter:
+  fluttertoast: ^8.2.2
+
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  hive_generator: ^2.0.0
+  build_runner: ^2.3.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

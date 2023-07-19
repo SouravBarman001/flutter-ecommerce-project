@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -56,9 +57,10 @@ class _SliderWidgetsState extends State<SliderWidgets> {
                         // width: 500, // Specify a fixed width for each item
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.network(
-                            imagePath.toString(),
-                            fit: BoxFit.cover,
+                          child:  CachedNetworkImage(
+                            imageUrl: imagePath.toString(),
+                            placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) => const Icon(Icons.error),
                           ),
                         ),
                       ),

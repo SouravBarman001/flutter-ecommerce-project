@@ -9,23 +9,15 @@ class SplashScreenController extends ChangeNotifier{
 
   bool loginTrue = false;
 
-  Future<void> checkLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var loginValue = prefs.getBool('YesLogin');
-    if (loginValue != null && loginValue) {
-      loginTrue = true;
-      navigationCheck(true);
-      notifyListeners();
-      print('inside notifier');
-      //print('Shared Preference value : $loginValue');
-    }
+  Future<bool> checkUserCredentials() async {
+    final prefs = await SharedPreferences.getInstance();
+    final email = prefs.getString('email');
+    final password = prefs.getString('password');
 
-  }
-  void navigationCheck(bool login){
-    if(login){
-      locator<NavigationServices>().navigateTo(HomePage.id);
+    if(email != null && password != null){
+      return true;
     }else{
-      locator<NavigationServices>().navigateTo(LoginPage.id);
+      return false;
 
     }
   }
