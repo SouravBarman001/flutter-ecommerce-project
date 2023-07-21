@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../apis/featured_products_apis.dart';
-import '../controller/cart_controller.dart';
-import '../model/featured_product_model.dart';
+import '../Repositories/local_home_repository.dart';
+import '../Repositories/remote_home_repository.dart';
+import '../hivedb/repository_data.dart';
 import '../pages/dummy/dummy_api_call.dart';
-import '../pages/dummy/repository_data.dart';
-import '../pages/locator.dart';
-import '../services/scrollview_controller_services.dart';
+import '../services/network_services.dart';
 import 'components/reusable_listview_items_container.dart';
+
 class FeaturedProducts extends StatefulWidget {
   const FeaturedProducts({super.key});
 
@@ -16,7 +15,6 @@ class FeaturedProducts extends StatefulWidget {
 }
 
 class _FeaturedProductsState extends State<FeaturedProducts> {
-
   late Future<List<RepositoryData>> _repositoryListFuture;
 
   @override
@@ -25,7 +23,6 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
     super.initState();
     // FeaturedProductApis.fetchFeaturedProductsData();
     _repositoryListFuture = DummyApiCall().apiCall();
-
   }
 
   int currentIndex = 0;
@@ -39,7 +36,15 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
 
   @override
   Widget build(BuildContext context) {
-  //  DummyApiCall dummyApiCall = DummyApiCall();
+    //  DummyApiCall dummyApiCall = DummyApiCall();
+
+    var netStatus = Provider.of<NetworkStatus>(context);
+    //HomePageController homePageController = HomePageController();
+    // HomePageController homePageController = HomePageController();
+    // homePageController.homeRepoFeaturedProduct = LocalHomeRepo();
+
+    RemoteHomeRepo remoteHomeRepo = RemoteHomeRepo();
+    LocalHomeRepo localHomeRepo = LocalHomeRepo();
 
     return Container(
       padding: const EdgeInsets.only(
@@ -52,7 +57,7 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor:Colors.red.shade400,
+                  backgroundColor: Colors.red.shade400,
                   elevation: 2,
                 ),
                 onPressed: () {
@@ -63,46 +68,56 @@ class _FeaturedProductsState extends State<FeaturedProducts> {
                   style: TextStyle(color: Colors.white),
                 ),
               ),
-              TextButton(onPressed: (){}, child: const Text('More',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w700),)),
+              TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'More',
+                    style: TextStyle(
+                        color: Colors.grey, fontWeight: FontWeight.w700),
+                  )),
             ],
           ),
-          Container(
-            color: const Color(0xfffafafa),
-            height: 250,
-            child: FutureBuilder<List<RepositoryData>>(
-              future: _repositoryListFuture,
-              builder: (context, AsyncSnapshot<List<RepositoryData>> snapshot) {
-                if (snapshot.hasData) {
-                  final repositoryList = snapshot.data!;
 
-                  return ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: repositoryList.length,
-                    itemBuilder: (context, index) {
-                      final featuredProduct = repositoryList[index];
+          Container( // netStatus == NetworkStatus.offline  //  remoteHomeRepo.fetchFeaturedProduct() //
+              color: const Color(0xfffafafa),
+              height: 250,
+              child: FutureBuilder<List<RepositoryData>>(
+                      future: netStatus == NetworkStatus.online ? remoteHomeRepo.fetchFeaturedProduct() : localHomeRepo.fetchFeaturedProduct(),
+                      builder: (context,
+                          AsyncSnapshot<List<RepositoryData>> snapshot) {
+                        if (snapshot.hasData) {
+                          final repositoryList = snapshot.data!;
 
-                      return ReusableListViewItemContainer(featuredProduct: featuredProduct, index: index,);
-                    },
-                  );
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else {
-                  return const Center(child: RefreshProgressIndicator());
-                }
-              },
-            ),
+                          return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: repositoryList.length,
+                            itemBuilder: (context, index) {
+                              final featuredProduct = repositoryList[index];
+
+                              return ReusableListViewItemContainer(
+                                featuredProduct: featuredProduct,
+                                index: index,
+                              );
+                            },
+                          );
+                        } else if (snapshot.hasError) {
+                          return Image.asset(
+                            netStatus == NetworkStatus.online ? 'no_connection_featured_product.jpg'  : 'images/ No_Product_Found.png',
+                            fit: BoxFit.contain,
+                          );
+                        } else {
+                          return const Center(
+                              child: RefreshProgressIndicator());
+                        }
+                      },
+                    ),
+
+                   ),
+          const SizedBox(
+            height: 10,
           ),
-
-
-          const SizedBox(height: 10,),
-
-
         ],
       ),
-
     );
-
   }
-
-
 }

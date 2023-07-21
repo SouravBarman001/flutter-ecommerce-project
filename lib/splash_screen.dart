@@ -40,14 +40,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return  Scaffold(
         backgroundColor: const Color(0xffffffff),
         body: Center(
           child:Image.asset( 'images/splash/two.gif',width: 300,height: 300,),
         ),
-      ),
     );
   }
 }

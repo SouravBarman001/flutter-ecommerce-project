@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerceapp/pages/dummy/repository_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../controller/cart_controller.dart';
 import '../../database_helper/db_helper.dart';
+import '../../hivedb/repository_data.dart';
 import '../../model/cart_model.dart';
-import '../../model/featured_product_model.dart';
 
 class ReusableListViewItemContainer extends StatelessWidget {
   const ReusableListViewItemContainer({
@@ -74,7 +73,7 @@ class ReusableListViewItemContainer extends StatelessWidget {
                 const SizedBox(height: 4),
                 RichText(
                   text: TextSpan(
-                    text: 'BDT-${featuredProduct.price}',
+                    text: 'USD-${featuredProduct.price}',
                     style:
                     const TextStyle(fontSize: 15, color: Colors.black),
                     children: const [

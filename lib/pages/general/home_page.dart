@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import '../../apis/push_notifications.dart';
 import '../../widgets/appbar_action_widgets.dart';
 import '../../widgets/best_seller.dart';
@@ -70,59 +71,62 @@ class _HomePageState extends State<HomePage> {
           borderRadius: BorderRadius.all(Radius.circular(16)),
         ),
         drawer: const SideNavDrawer(),
-        child: Scaffold(
-          appBar: AppBar(
-            // title: const Text('Advanced Drawer Example'),
-            leading: IconButton(
-              onPressed: _handleMenuButtonPressed,
-              icon: ValueListenableBuilder<AdvancedDrawerValue>(
-                valueListenable: _advancedDrawerController,
-                builder: (_, value, __) {
-                  return AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 250),
-                    child: Icon(
-                      value.visible ? Icons.clear : Icons.menu,
-                      key: ValueKey<bool>(value.visible),
-                    ),
-                  );
-                },
+        child: GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            appBar: AppBar(
+              // title: const Text('Advanced Drawer Example'),
+              leading: IconButton(
+                onPressed: _handleMenuButtonPressed,
+                icon: ValueListenableBuilder<AdvancedDrawerValue>(
+                  valueListenable: _advancedDrawerController,
+                  builder: (_, value, __) {
+                    return AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 250),
+                      child: Icon(
+                        value.visible ? Icons.clear : Icons.menu,
+                        key: ValueKey<bool>(value.visible),
+                      ),
+                    );
+                  },
+                ),
               ),
+              elevation: 3,
+              backgroundColor: const Color(0xffdf0100),
+              actions: const [
+                AppBarActionWidgets(),
+              ],
             ),
-            elevation: 3,
-            backgroundColor: const Color(0xffdf0100),
-            actions: const [
-              AppBarActionWidgets(),
-            ],
-          ),
-          body: const SafeArea(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SliderWidgets(),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  FeaturedProducts(),
-                  SizedBox(
-                    height: 10,
-                  ),
+            body: const SafeArea(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SliderWidgets(),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    FeaturedProducts(),
+                    SizedBox(
+                      height: 10,
+                    ),
 
-                  HappyHourTime(),
-                  SizedBox(
-                    height: 5,
-                  ),
-                 // Bestsellers
-                  BestSeller(),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  // category products
-                  CategoryProduct(),
-                  SizedBox(
-                    height: 15,
-                  ),
-                // Featured products
-                ],
+                    HappyHourTime(),
+                    SizedBox(
+                      height: 5,
+                    ),
+                   // Bestsellers
+                    BestSeller(),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    // category products
+                    CategoryProduct(),
+                    SizedBox(
+                      height: 15,
+                    ),
+                  // Featured products
+                  ],
+                ),
               ),
             ),
           ),

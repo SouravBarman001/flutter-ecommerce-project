@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import '../model/banner_model.dart';
+import '../model/banner_model_repo_offline.dart';
 
 class BannerApis {
 
-  static List<BannerModel> photoList=[];
-  static Future<List<BannerModel>> fetchImages() async {
+  static List<BannerModelOffline> photoList=[];
+  static Future<List<BannerModelOffline>> fetchImages() async {
 
     final response = await http.get(
       Uri.parse('https://demo460.nop-station.com/api/slider/homepageslider'),
@@ -21,8 +21,8 @@ class BannerApis {
       final sliders = data['Data']['Sliders'];
 
       print('inside 200.....................................');
-      photoList = sliders.map<BannerModel>((slider) {
-        return BannerModel(imageUrl: slider['ImageUrl']);
+      photoList = sliders.map<BannerModelOffline>((slider) {
+        return BannerModelOffline(imageUrl: slider['ImageUrl']);
       }).toList();
 
       print('images added to list.....................................');
@@ -31,7 +31,5 @@ class BannerApis {
       throw Exception('Failed to fetch images');
     }
   }
-
-
 
 }

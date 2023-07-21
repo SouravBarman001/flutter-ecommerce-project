@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerceapp/pages/dummy/repository_data.dart';
 import 'package:flutter/material.dart';
+import '../../hivedb/repository_data.dart';
 import 'dummy_api_call.dart';
 
 class DummyListView extends StatefulWidget {
