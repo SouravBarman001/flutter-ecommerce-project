@@ -54,7 +54,7 @@ class ListViewItems extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const AutoSizeText(
-                  'Fazli Mango Fromsssssssssss Rassssssssssaajshahi',
+                  'Product Name',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
                   maxLines: 2,
                 ),
@@ -74,7 +74,7 @@ class ListViewItems extends StatelessWidget {
                                 10), // Adjust the width as needed for the desired spacing
                           ),
                           TextSpan(
-                              text: 'Per KG',
+                              text: 'Items',
                               style: TextStyle(
                                 fontSize: 12,
                               ))

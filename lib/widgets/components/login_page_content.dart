@@ -13,6 +13,13 @@ class LoginPageContent extends StatefulWidget {
 
 class _LoginPageContentState extends State<LoginPageContent> {
 
+  bool passwordVisible=false;
+
+  @override
+  void initState(){
+    super.initState();
+    passwordVisible=true;
+  }
   // Initialize SharedPreferences
 
   // final navigatorKey = GlobalKey<NavigatorState>();
@@ -36,15 +43,21 @@ class _LoginPageContentState extends State<LoginPageContent> {
 
 
   Widget buildCustomPrefixIcon({required IconData iconfrom}) {
-    return Container(
-      //  margin: const EdgeInsets.only(top: 10),
-      width: 0,
-      alignment: const Alignment(-0.99, 0.0),
-      child:  Icon(iconfrom),
+    return GestureDetector(
+      onTap: (){
+        print('tap on password icon');
+        setState(() {
+          passwordVisible = !passwordVisible;
+        });
+      },
+      child: Container(
+        //  margin: const EdgeInsets.only(top: 10),
+        width: 0,
+        alignment: const Alignment(-0.99, 0.0),
+        child:  Icon(iconfrom),
+      ),
     );
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +112,7 @@ class _LoginPageContentState extends State<LoginPageContent> {
           ),
           const Text('Password'),
           TextFormField(
+            obscureText:passwordVisible,
             controller: passController,
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -114,14 +128,12 @@ class _LoginPageContentState extends State<LoginPageContent> {
             decoration:  InputDecoration(
               //labelText: 'Email',
               // contentPadding:  const EdgeInsets.only(bottom: -10.0),
-              prefixIcon: buildCustomPrefixIcon(iconfrom :Icons.key_outlined),
+              prefixIcon: buildCustomPrefixIcon(iconfrom : passwordVisible == false ? Icons.remove_red_eye_outlined : Icons.remove_red_eye),
             ),
           ),
           const SizedBox(
             height: 25,
           ),
-
-
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
