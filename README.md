@@ -7,6 +7,7 @@
 3. A-side drawer for user information
 4. Keep cart contents in offline storage
 5. Online and Offline Mode. Here Hivedb is used to store all data
+6. Push notification
 
 ## Screenshots
 
