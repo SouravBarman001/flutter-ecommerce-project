@@ -1,4 +1,4 @@
-# eCommerce App README
+# Flutter E-Commerce App
 
 ## Key Responsibilities
 
