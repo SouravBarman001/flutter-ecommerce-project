@@ -17,5 +17,7 @@
 ![add to cart](https://github.com/SouravBarman001/flutter-ecommerce-project/blob/OfflineMode/screenshorts/e4.png)
 ![cart items](https://github.com/SouravBarman001/flutter-ecommerce-project/blob/OfflineMode/screenshorts/e5.png)
 ![Offline mode](https://github.com/SouravBarman001/flutter-ecommerce-project/blob/OfflineMode/screenshorts/e6.png)
+![push notification](https://github.com/SouravBarman001/flutter-ecommerce-project/blob/OfflineMode/screenshorts/e7.png)
+
 
 <!-- Add any additional sections here -->
