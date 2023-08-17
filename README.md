@@ -1,16 +1,8 @@
 # ecommerceapp
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-Key Responsibilities 
+1. Social media and API Login
+2. Featured products added using API calls
+3. A-side drawer for user information
+4. Keep cart contents in offline storage 
+5. Online and Offline Mode. Here Hivedb is used to store all data
